@@ -47,7 +47,6 @@ const Movie = props => {
 
     newMovieLibrary.push(newMovie);
     setMovieLibrary(newMovieLibrary);
-    console.log(newMovie);
   };
 
   const { Poster, Year, Title, imdbRating, Plot } = movie;
