@@ -13,7 +13,9 @@ const App = () => {
         <Switch>
           <MovieProvider>
             <Route path="/" exact render={() => <MovieSearch />} />
-            <Route path="/library" render={() => <Library />} />
+            <Route path="/library">
+              <Library />
+            </Route>
           </MovieProvider>
         </Switch>
       </Router>
