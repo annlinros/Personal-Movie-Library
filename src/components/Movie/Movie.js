@@ -10,24 +10,33 @@ const Movie = props => {
 
   useEffect(() => {
     displayMovie();
-  });
+  }, [movie]);
 
   const displayMovie = () => {
     // const controller = new AbortController();
     // const signal = controller.signal;
 
-    fetch(`http://www.omdbapi.com/?apikey=5093026f&i=${props.id}&plot=short`)
+    fetch(`http://www.omdbapi.com/?apikey=5093026f&i=${props.id}&plot=short`
+    // , {
+    //   signal: signal
+    // }
+    )
       .then(res => res.json())
       .then(data => {
         setMovie(data);
       })
       .catch(error => console.log(error));
+
+    // return function cleanup() {
+    //   controller.abort();
+    // };
   };
 
   // Add movie to the library.
 
   const addToLibrary = () => {
     const newMovie = {
+      id:movie.imdbID,
       title: movie.Title,
       year: movie.Year,
       plot: movie.Plot,
@@ -38,7 +47,7 @@ const Movie = props => {
 
     newMovieLibrary.push(newMovie);
     setMovieLibrary(newMovieLibrary);
-    console.log(newMovieLibrary);
+    console.log(newMovie);
   };
 
   const { Poster, Year, Title, imdbRating, Plot } = movie;
