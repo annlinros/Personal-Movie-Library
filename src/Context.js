@@ -24,7 +24,8 @@ export const MovieProvider = props => {
     const signal = controller.signal;
 
     const apiResponse = await fetch(
-      `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`,
+      `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
+      ,
       { signal: signal }
     );
     const data = await apiResponse.json();
@@ -36,7 +37,7 @@ export const MovieProvider = props => {
     }
 
     return function cleanup() {
-      controller.abort();
+      // controller.abort();
       console.log("cleanup works");
     };
   };
