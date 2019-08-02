@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Library from "./components/Library";
+import { MovieProvider } from "./Context";
 import Header from "./components/Header/Header.js";
 import MovieSearch from "./components/Movie/MovieSearch";
 
@@ -10,8 +11,10 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
-          <Route path="/" exact render={() => <MovieSearch />} />
-          <Route path="/library" render={() => <Library />} />
+          <MovieProvider>
+            <Route path="/" exact render={() => <MovieSearch />} />
+            <Route path="/library" render={() => <Library />} />
+          </MovieProvider>
         </Switch>
       </Router>
     </div>
