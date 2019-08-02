@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MovieContext } from "../../Context";
+
 import "./Movie.css";
 
 const Movie = props => {
   const [movie, setMovie] = useState({});
 
+  const { movieLibrary, setMovieLibrary } = useContext(MovieContext);
+
   useEffect(() => {
     displayMovie();
   });
 
-
   const displayMovie = () => {
+    // const controller = new AbortController();
+    // const signal = controller.signal;
+
     fetch(`http://www.omdbapi.com/?apikey=5093026f&i=${props.id}&plot=short`)
       .then(res => res.json())
       .then(data => {
@@ -19,8 +25,20 @@ const Movie = props => {
   };
 
   // Add movie to the library.
+
   const addToLibrary = () => {
-    props.libraryItem(movie)
+    const newMovie = {
+      title: movie.Title,
+      year: movie.Year,
+      plot: movie.Plot,
+      poster: movie.Poster,
+      imdbRating: movie.imdbRating
+    };
+    const newMovieLibrary = [...movieLibrary];
+
+    newMovieLibrary.push(newMovie);
+    setMovieLibrary(newMovieLibrary);
+    console.log(newMovieLibrary);
   };
 
   const { Poster, Year, Title, imdbRating, Plot } = movie;
