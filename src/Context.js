@@ -21,13 +21,8 @@ export const MovieProvider = props => {
 
   const getMovies = async () => {
     try {
-      const controller = new AbortController();
-      const signal = controller.signal;
-
       const apiResponse = await fetch(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`,
-        { signal: signal }
-      );
+        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`      );
       const data = await apiResponse.json();
       console.log(data);
 
@@ -36,10 +31,6 @@ export const MovieProvider = props => {
       } else {
         setMovieFound("Movie not Found! Search again");
       }
-      return function cleanup() {
-        controller.abort();
-        console.log("cleanup works");
-      };
     } catch (error) {
       console.log(error);
     }

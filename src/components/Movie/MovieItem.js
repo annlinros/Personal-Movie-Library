@@ -14,22 +14,12 @@ const MovieItem = props => {
   },[movieIDs]);
 
   const displayMovie = () => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
     fetch(`http://www.omdbapi.com/?apikey=5093026f&i=${props.id}&plot=short`)
       .then(res => res.json())
       .then(data => {
         setMovie(data);
       })
       .catch(error => console.log(error));
-
-    // clean up function
-    return function cleanup() {
-      console.log("cleanup works");
-
-      controller.abort();
-    };
   };
 
   // Add movie to the library.
