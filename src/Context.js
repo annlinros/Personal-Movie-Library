@@ -20,26 +20,28 @@ export const MovieProvider = props => {
   };
 
   const getMovies = async () => {
-    const controller = new AbortController();
-    const signal = controller.signal;
+    try {
+      const controller = new AbortController();
+      const signal = controller.signal;
 
-    const apiResponse = await fetch(
-      `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
-      ,
-      { signal: signal }
-    );
-    const data = await apiResponse.json();
-    if (data.Response === "True") {
-      setMovieIDs(data.Search.map(movie => movie.imdbID));
-      setMovieFound(true);
-    } else {
-      setMovieFound(false);
+      const apiResponse = await fetch(
+        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`,
+        { signal: signal }
+      );
+      const data = await apiResponse.json();
+      if (data.Response === "True") {
+        setMovieIDs(data.Search.map(movie => movie.imdbID));
+        setMovieFound(true);
+      } else {
+        setMovieFound(false);
+      }
+      return function cleanup() {
+        // controller.abort();
+        console.log("cleanup works");
+      };
+    } catch (error) {
+      console.log(error);
     }
-
-    return function cleanup() {
-      // controller.abort();
-      console.log("cleanup works");
-    };
   };
 
   return (
