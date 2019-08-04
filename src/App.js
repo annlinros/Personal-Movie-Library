@@ -12,7 +12,9 @@ const App = () => {
         <Header />
         <Switch>
           <MovieProvider>
-            <Route path="/" exact render={() => <MovieSearch />} />
+            <Route path="/" exact>
+              <MovieSearch />
+            </Route>
             <Route path="/library">
               <Library />
             </Route>
