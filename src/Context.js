@@ -7,8 +7,8 @@ export const MovieContext = createContext();
 export const MovieProvider = props => {
   const [movieIDs, setMovieIDs] = useState([]);
   const [search, setSearch] = useState("");
-  const [movieFound, setMovieFound] = useState();
-  const [query, setQuery] = useState("Flipped");
+  const [movieFound, setMovieFound] = useState("");
+  const [query, setQuery] = useState("");
   const [movieLibrary, setMovieLibrary] = useState([]);
 
   const handleSearch = e => {
@@ -29,14 +29,15 @@ export const MovieProvider = props => {
         { signal: signal }
       );
       const data = await apiResponse.json();
+      console.log(data);
+
       if (data.Response === "True") {
         setMovieIDs(data.Search.map(movie => movie.imdbID));
-        setMovieFound(true);
       } else {
-        setMovieFound(false);
+        setMovieFound("Movie not Found! Search again");
       }
       return function cleanup() {
-        // controller.abort();
+        controller.abort();
         console.log("cleanup works");
       };
     } catch (error) {

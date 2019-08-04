@@ -1,26 +1,26 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Library from "./components/Library";
 import { MovieProvider } from "./Context";
 import Header from "./components/Header/Header.js";
-import MovieSearch from "./components/Movie/MovieSearch";
+import Movie from "./components/Movie/Movie";
+import Library from "./components/Library";
 
 const App = () => {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <MovieProvider>
-            <Route path="/" exact>
-              <MovieSearch />
+      <MovieProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Movie}>
+              <Movie />
             </Route>
-            <Route path="/library">
+            <Route path="/library" component={Library}>
               <Library />
             </Route>
-          </MovieProvider>
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </MovieProvider>
     </div>
   );
 };
