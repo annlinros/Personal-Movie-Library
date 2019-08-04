@@ -25,7 +25,10 @@ const Movie = props => {
       })
       .catch(error => console.log(error));
 
+    // clean up function
     return function cleanup() {
+      console.log("cleanup works");
+
       controller.abort();
     };
   };
