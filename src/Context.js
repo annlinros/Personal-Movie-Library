@@ -6,16 +6,16 @@ export const MovieProvider = props => {
   // State declarations
   const [search, setSearch] = useState("");
   const [movieLibrary, setMovieLibrary] = useState([]);
-  const [url, setUrl] = useState(
-    // `http://www.omdbapi.com/?apikey=5093026f&s=Flipped`
-  );
+  const [url, setUrl] = useState();
+  // `http://www.omdbapi.com/?apikey=5093026f&s=Flipped`
 
   // Handles  search by user
   const handleSearch = e => {
     setSearch(e.target.value);
   };
   //   sets the state url with the user input
-  const getUrl = () => {
+  const getUrl = e => {
+    e.preventDefault();
     setUrl(`http://www.omdbapi.com/?apikey=5093026f&s=${search}`);
   };
 

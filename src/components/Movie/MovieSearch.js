@@ -7,7 +7,7 @@ export default function MovieSearch() {
   
   // Handles the search by user.
   return (
-    <div className="searchBar">
+    <form className="searchBar" onSubmit={getUrl}>
       <input
         className="searchBox"
         type="search"
@@ -15,9 +15,9 @@ export default function MovieSearch() {
         value={search}
         onChange={handleSearch}
       />
-      <button className="searchBtn" type="submit" onClick={getUrl}>
+      <button className="searchBtn" type="submit">
         GO!
       </button>
-    </div>
+    </form>
   );
 }
