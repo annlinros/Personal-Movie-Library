@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { MovieContext } from "../Context";
+import { MovieContext } from "../../Context";
 import LibraryItem from './LibraryItem'
 
 export default function Library() {

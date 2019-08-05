@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MovieProvider } from "./Context";
-import Header from "./components/Header/Header.js";
+import Header from "./components/Library/Header/Header.js";
 import Movie from "./components/Movie/Movie";
-import Library from "./components/Library";
+import Library from "./components/Library/Library";
 
 const App = () => {
   return (

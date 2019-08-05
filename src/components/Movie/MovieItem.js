@@ -2,25 +2,26 @@ import React, { useEffect, useState, useContext } from "react";
 import { MovieContext } from "../../Context";
 import "./Movie.css";
 
-const MovieItem = props => {
-  const [movie, setMovie] = useState({});
+const MovieItem = ({id}) => {
 
-  const {movieIDs, movieLibrary, setMovieLibrary } = useContext(
+  const [movie, setMovie] = useState({});
+  const {movieLibrary, setMovieLibrary } = useContext(
     MovieContext
   );
 
   useEffect(() => {
+    const displayMovie = () => {
+      fetch(
+        `http://www.omdbapi.com/?apikey=5093026f&i=${id}&plot=short`
+      )
+        .then(res => res.json())
+        .then(data => {
+          setMovie(data);
+        })
+        .catch(error => console.log(error));
+    };
     displayMovie();
-  },[movieIDs]);
-
-  const displayMovie = () => {
-    fetch(`http://www.omdbapi.com/?apikey=5093026f&i=${props.id}&plot=short`)
-      .then(res => res.json())
-      .then(data => {
-        setMovie(data);
-      })
-      .catch(error => console.log(error));
-  };
+  },[id]);
 
   // Add movie to the library.
 
