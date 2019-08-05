@@ -1,23 +1,20 @@
-import React,{useContext,useEffect} from "react";
+import React,{useContext} from "react";
 import { MovieContext } from "../../Context";
 
 export default function MovieSearch() {
 
-  const { query,getQuery, handleSearch,getMovies } = useContext(MovieContext);
-
-  useEffect(() => {
-    getMovies();
-  }, [query]);
-
+  const { getUrl, search, handleSearch } = useContext(MovieContext);
+  
   return (
     <div className="searchBar">
       <input
         className="searchBox"
         type="search"
         placeholder="Type in a movie name.."
+        value={search}
         onChange={handleSearch}
       />
-      <button className="searchBtn" type="submit" onClick={getQuery}>
+      <button className="searchBtn" type="submit" onClick={getUrl}>
         GO!
       </button>
     </div>
