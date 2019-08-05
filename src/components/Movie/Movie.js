@@ -5,12 +5,15 @@ import MovieItem from "./MovieItem";
 import "./Movie.css";
 
 export default function Movie() {
-  
+
+  // getting url from the MovieContext
   const { url } = useContext(MovieContext);
 
+  // State variables
   const [movieIDs, setMovieIDs] = useState([]);
   const [movieFound, setMovieFound] = useState(true);
 
+ //  API calls to the OMDB API when the url changes, and set the movieIDs array.
   useEffect(() => {
     const getMovies = async () => {
     try {
@@ -31,7 +34,7 @@ export default function Movie() {
     getMovies();
   }, [url]);
 
-
+// maps over the movieIDs array to render MovieItem for each ID.
   return (
     <React.Fragment>
       <MovieSearch />

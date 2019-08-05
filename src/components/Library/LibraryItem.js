@@ -1,7 +1,7 @@
 import React from "react";
 
-export default function LibraryItem({movie}) {
-	
+export default function LibraryItem({ movie }) {
+  // renders out each movie item in library.
   const { poster, year, title, imdbRating, plot } = movie;
 
   return (

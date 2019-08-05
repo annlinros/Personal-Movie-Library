@@ -5,6 +5,7 @@ export default function MovieSearch() {
 
   const { getUrl, search, handleSearch } = useContext(MovieContext);
   
+  // Handles the search by user.
   return (
     <div className="searchBar">
       <input
