@@ -1,24 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Header.css";
+import React from "react";   
+import { Nav, Navbar } from "react-bootstrap";
 
 export default function Header() {
   return (
-    <nav className="nav">
-      <h1> Movie Library</h1>
-      <div className="routeDivs">
-        <Link style={linkStyle} to="/">
-          Search  {" | "} 
-        </Link>
-        
-        <Link style={linkStyle} to="/library">
-          Library
-        </Link>
-      </div>
-    </nav>
+    <Navbar bg="dark" variant="dark" expand="md">
+      <Navbar.Brand href="#home">Movie Library</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="ml-auto">
+          <Nav.Item>
+            <Nav.Link href="/">Search</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link href="/library">Library</Nav.Link>
+          </Nav.Item>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
-const linkStyle = {
-  textDecoration: "none",
-  color: "#fff"
-};
