@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { MovieContext } from "../../Context";
 import "./Movie.css";
+import { Col, Card, Button } from "react-bootstrap";
 
 const MovieItem = ({ id }) => {
   const [movie, setMovie] = useState({});
@@ -39,26 +40,20 @@ const MovieItem = ({ id }) => {
   const { Poster, Year, Title, imdbRating, Plot } = movie;
 
   return (
-    <React.Fragment>
-      <div className="movie-item-container">
-        <div className="image-container">
-          <div
-            className="bg-image"
-            style={{ backgroundImage: `url(${Poster})` }}
-          />
-        </div>
-        <div className="movie-info">
-          <h1>{Title}</h1>
-          <p>Year: {Year}</p>
-          <p>Rating: {imdbRating} / 10</p>
-          <p className="plot">{Plot}</p>
-          <button className="addMovieBtn" onClick={addToLibrary}>
-            {" "}
-            + Add Movie
-          </button>
-        </div>
-      </div>
-    </React.Fragment>
+    <Col xs={12} md={6} lg={4}>
+      <Card className="mx-auto p-2 mb-1"  border="secondary" style={{ height: "auto" }}>
+        <Card.Img style={{ height: "12rem"}} src={Poster} />
+        <Card.Body>
+          <Card.Title>{Title}</Card.Title>
+          <Card.Subtitle className="mb-2">
+            Rating : {imdbRating}
+          </Card.Subtitle>{" "}
+          <Card.Subtitle>Year: {Year}</Card.Subtitle>
+          <Card.Text>{Plot}</Card.Text>
+          <Button variant="success" onClick={addToLibrary}>Add to library</Button>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 };
 
