@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { MovieContext } from "../../Context";
-import "./Movie.css";
+// import "./Movie.css";
 import { Col, Card, Button } from "react-bootstrap";
 
 const MovieItem = ({ id }) => {
@@ -34,15 +34,19 @@ const MovieItem = ({ id }) => {
 
     newMovieLibrary.push(newMovie);
     setMovieLibrary(newMovieLibrary);
-    console.log("lib works");
+    console.log("lib works", movieLibrary);
   };
   // renders the individual movie item
   const { Poster, Year, Title, imdbRating, Plot } = movie;
 
   return (
     <Col xs={12} md={6} lg={4}>
-      <Card className="mx-auto p-2 mb-1"  border="secondary" style={{ height: "auto" }}>
-        <Card.Img style={{ height: "12rem"}} src={Poster} />
+      <Card
+        className="mx-auto p-2 mb-1"
+        border="secondary"
+        style={{ height: "auto" }}
+      >
+        <Card.Img style={{ height: "12rem" }} src={Poster} />
         <Card.Body>
           <Card.Title>{Title}</Card.Title>
           <Card.Subtitle className="mb-2">
@@ -50,7 +54,9 @@ const MovieItem = ({ id }) => {
           </Card.Subtitle>{" "}
           <Card.Subtitle>Year: {Year}</Card.Subtitle>
           <Card.Text>{Plot}</Card.Text>
-          <Button variant="success" onClick={addToLibrary}>Add to library</Button>
+          <Button variant="success" onClick={addToLibrary}>
+            Add to library
+          </Button>
         </Card.Body>
       </Card>
     </Col>

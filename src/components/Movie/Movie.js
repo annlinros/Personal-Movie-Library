@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { MovieContext } from "../../Context";
 import MovieSearch from "./MovieSearch";
 import MovieItem from "./MovieItem";
-import "./Movie.css";
+// import "./Movie.css";
 import { Container, Row} from "react-bootstrap";
 
 export default function Movie() {
