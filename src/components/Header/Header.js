@@ -1,5 +1,6 @@
 import React from "react";   
 import { Nav, Navbar } from "react-bootstrap";
+import {Link } from 'react-router-dom'
 
 export default function Header() {
   return (
@@ -9,10 +10,12 @@ export default function Header() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item>
-            <Nav.Link href="/">Search</Nav.Link>
+            <Nav.Link as={Link} to="/">
+              Search
+            </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link href="/library">Library</Nav.Link>
+            <Nav.Link as={Link} to="/library">Library</Nav.Link>
           </Nav.Item>
         </Nav>
       </Navbar.Collapse>
