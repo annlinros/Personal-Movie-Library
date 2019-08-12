@@ -34,7 +34,7 @@ const MovieItem = ({ id }) => {
 
     newMovieLibrary.push(newMovie);
     setMovieLibrary(newMovieLibrary);
-    console.log("lib works", movieLibrary);
+    console.log("lib works", newMovieLibrary);
   };
   // renders the individual movie item
   const { Poster, Year, Title, imdbRating, Plot } = movie;

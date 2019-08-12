@@ -1,23 +1,27 @@
 import React from "react";
+import {Col, Card, Button } from "react-bootstrap";
 
 export default function LibraryItem({ movie }) {
   // renders out each movie item in library.
-  const { poster, year, title, imdbRating, plot } = movie;
+  const { poster, year, title, imdbRating } = movie;
 
   return (
-    <div className="movie-item-container" style={{ color: "black" }}>
-      <div className="image-container">
-        <div
-          className="bg-image"
-          style={{ backgroundImage: `url(${poster})` }}
-        />
-      </div>
-      <div className="movie-info">
-        <h1>Title :{title}</h1>
-        <small>Year: {year}</small>
-        <h4>Rating: {imdbRating} / 10</h4>
-        <p>{plot}</p>
-      </div>
-    </div>
+    <Col xs={12} md={6} lg={4}>
+    <Card
+      className="mx-auto p-2 mb-1"
+      border="secondary"
+      style={{ height: "100vh", color: "black" }}
+    >
+      <Card.Img style={{ height: "12rem" }} src={poster} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Card.Subtitle className="mb-2">
+          Rating : {imdbRating}
+        </Card.Subtitle>{" "}
+        <Card.Subtitle>Year: {year}</Card.Subtitle>
+        <Button variant="success">Mark Seen</Button>
+      </Card.Body>
+    </Card>
+    </Col>
   );
 }

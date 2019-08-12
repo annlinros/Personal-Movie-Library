@@ -3,7 +3,7 @@ import { MovieContext } from "../../Context";
 import MovieSearch from "./MovieSearch";
 import MovieItem from "./MovieItem";
 // import "./Movie.css";
-import { Container, Row} from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
 export default function Movie() {
   // getting url from the MovieContext
@@ -38,18 +38,18 @@ export default function Movie() {
       <MovieSearch />
       <Container>
         <Row>
-            {movieFound ? (
-              movieIDs.map(id => <MovieItem id={id} key={id} />)
-            ) : (
-              <h1
-                style={{
-                  textAlign: "center",
-                  color: "black"
-                }}
-              >
-                Not Found!
-              </h1>
-            )}
+          {movieFound ? (
+            movieIDs.map(id => <MovieItem id={id} key={id} />)
+          ) : (
+            <h1
+              style={{
+                textAlign: "center",
+                color: "black"
+              }}
+            >
+              Not Found!
+            </h1>
+          )}
         </Row>
       </Container>
     </React.Fragment>
