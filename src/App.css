@@ -1,4 +1,7 @@
 body {
   margin: 0%;
-  background: #000;
+  background: #fff;
+}
+.App{
+  height: 100vh;
 }
