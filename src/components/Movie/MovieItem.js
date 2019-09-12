@@ -9,7 +9,7 @@ const MovieItem = ({ id }) => {
   //  makes another API call based on the movie Id recieved as prop.
   useEffect(() => {
     const displayMovie = () => {
-      fetch(`http://www.omdbapi.com/?apikey=5093026f&i=${id}&plot=short`)
+      fetch(`https://www.omdbapi.com/?apikey=5093026f&i=${id}&plot=short`)
         .then(res => res.json())
         .then(data => {
           setMovie(data);
