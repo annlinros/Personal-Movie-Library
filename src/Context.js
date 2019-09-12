@@ -16,7 +16,7 @@ export const MovieProvider = props => {
   //   sets the state url with the user input
   const getUrl = e => {
     e.preventDefault();
-    setUrl(`http://www.omdbapi.com/?apikey=5093026f&s=${search}`);
+    setUrl(`https://www.omdbapi.com/?apikey=5093026f&s=${search}`);
   };
 
   return (
